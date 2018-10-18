@@ -16,6 +16,7 @@
         <module>matrix-spring-boot-proxy-example</module>
         <module>matrix-spring-boot-registrar-example</module>
         <module>matrix-spring-boot-selector-example</module>
+        <module>matrix-feign-proxy-example</module>
     </modules>
 
     <properties>

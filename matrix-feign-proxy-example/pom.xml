@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>matrix-feign-proxy-example</artifactId>
+    <name>Nepxion Matrix Spring Boot Selector Example</name>
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <description>Nepxion Matrix is an AOP framework integrated with Spring AutoProxy, Spring Registrar and Spring Import Selector</description>
+    <url>http://www.nepxion.com</url>
+
+    <parent>
+        <groupId>com.nepxion</groupId>
+        <artifactId>matrix</artifactId>
+        <version>2.0.1</version>
+    </parent>
+
+    <properties>
+        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.boot.version>1.5.14.RELEASE</spring.boot.version>
+        <!-- <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.boot.version>2.0.3.RELEASE</spring.boot.version> -->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>matrix-aop-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${spring.boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.4.0.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>
