@@ -59,6 +59,9 @@ Matrix框架一般可以应用到如下场景中：
 ### Spring Import Selector机制
 > 参考@EnableCircuitBreaker的用法
 
+### Feign接口代理机制
+> 参考matrix-feign-proxy-example的用法
+- 支持在Feign接口的方法和类上添加自己的拦截器
 ## 兼容
 最新版本兼容
 - Spring 4.x.x和Spring Boot 1.x.x

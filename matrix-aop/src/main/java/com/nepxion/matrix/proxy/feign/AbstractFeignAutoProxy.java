@@ -29,7 +29,7 @@ import com.nepxion.matrix.proxy.mode.ScanMode;
 /**
  * 子类通过实现getAdditionalInterceptors方法返回拦截器，对Feign接口的方法进行拦截
  */
-public abstract class AbstractFeignAutoProxy extends AbstractAutoScanProxy implements PriorityOrdered {
+public abstract class AbstractFeignAutoProxy extends AbstractAutoScanProxy implements PriorityOrdered{
 	private static final long serialVersionUID = -481395242918857264L;
 	private static String FEIGN_FACTORY_BEAN = "org.springframework.cloud.netflix.feign.FeignClientFactoryBean";
 	private String[] scanPackages;
@@ -112,10 +112,11 @@ public abstract class AbstractFeignAutoProxy extends AbstractAutoScanProxy imple
 
 				Class targetType = (Class) FieldUtils.readField(invocation.getThis(), "type", true);
 
-				Object[] interceptors = AbstractFeignAutoProxy.this.getAdditionalInterceptors(targetType);
+//				Object[] interceptors = AbstractFeignAutoProxy.this.getAdditionalInterceptors(targetType);
 				// 根据Feign接口方法上的注解查看是否需要增强
-				interceptors = AbstractFeignAutoProxy.this.scanAndProxyForMethod(targetType,
-						targetType.getCanonicalName(), targetType.getName(), interceptors, false);
+				Object[] interceptors = AbstractFeignAutoProxy.this.scanAndProxyForTarget(targetType, targetType.getName(), false);
+//				interceptors = AbstractFeignAutoProxy.this.scanAndProxyForMethod(targetType,
+//						targetType.getCanonicalName(), targetType.getName(), interceptors, false);
 				if (interceptors != DO_NOT_PROXY) {
 					for (Object interceptor : interceptors) {
 						proxyFactory.addAdvice((Advice) interceptor);
